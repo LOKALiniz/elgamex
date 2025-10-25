@@ -38,14 +38,14 @@ const kodlar = {
     {
       type: "link",
       label: "🧪 Matrix Kod klasörü",
-      url: "https://drive.google.com/drive/folders/1VF9_Xn5JbU5yX7Y_GdOSKU-V9tjKjsSW"
+      url: "https://drive.google.com/drive/folders/1x6d9A-CpPLR5Cscpaa6uvoCXA7brLwfi?usp=drive_link"
     }
   ],
     site: [
     {
       type: "link",
       label: "💻 Sitemin Kodları",
-      url: "https://drive.google.com/drive/folders/1x6d9A-CpPLR5Cscpaa6uvoCXA7brLwfi"
+      url: "https://drive.google.com/drive/folders/1sLex8_GgfEiHeFKbSmWhxYQyRqkP_mp1?usp=drive_link"
     }
   ]
 };
