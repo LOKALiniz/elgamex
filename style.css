@@ -1,3 +1,13 @@
+:root {
+  --theme-glow: #00f;
+  --light-bg1: #fdfdfd;
+  --light-bg2: #eaeaea;
+  --light-accent: #ffd6e8;
+  --light-hover: #cce5ff;
+  --light-text: #222;
+  --light-shadow: rgba(0, 0, 0, 0.05);
+}
+
 body {
   margin: 0;
   padding: 2rem;
@@ -8,7 +18,7 @@ body {
   background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0f0c29);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background 1s ease, color 0.8s ease;
 }
 
 @keyframes gradientShift {
@@ -18,8 +28,8 @@ body {
 }
 
 body.light {
-  background: linear-gradient(-45deg, #f0f0f0, #dcdcdc, #e0e0e0, #f0f0f0);
-  color: #111;
+  background: linear-gradient(-45deg, var(--light-bg1), var(--light-bg2), var(--light-bg1));
+  color: var(--light-text);
 }
 
 .title {
@@ -76,6 +86,16 @@ body.light {
   opacity: 0.6;
 }
 
+body.light .links a {
+  background-color: var(--light-accent);
+  color: var(--light-text);
+  box-shadow: 0 0 6px var(--light-shadow);
+}
+
+body.light .links a:hover {
+  background-color: var(--light-hover);
+}
+
 footer {
   margin-top: 2rem;
   font-size: 0.6rem;
@@ -108,10 +128,12 @@ footer {
   cursor: pointer;
   font-size: 0.8rem;
   z-index: 9999;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .theme-toggle:hover {
-  background: #00f;
+  background: var(--theme-glow);
+  transform: scale(1.05);
 }
 
 .counter {
@@ -150,6 +172,7 @@ footer {
     transform: translateY(100vh);
   }
 }
+
 .project-toggle {
   position: fixed;
   bottom: 90px;
@@ -163,6 +186,7 @@ footer {
   font-size: 0.8rem;
   z-index: 9999;
 }
+
 .project-toggle:hover {
   background: #00f;
 }
@@ -185,6 +209,7 @@ footer {
   font-size: 0.8rem;
   transition: background 0.3s ease;
 }
+
 .project-item:hover {
   background: #00f;
 }
@@ -206,6 +231,13 @@ footer {
   overflow-x: auto;
   box-shadow: 0 0 10px #00f;
 }
+
+body.light .code-block {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 0 10px var(--light-shadow);
+}
+
 .categories {
   margin-top: 2rem;
   display: flex;
@@ -229,6 +261,15 @@ footer {
   background: #00f;
 }
 
+body.light .categories button {
+  background: var(--light-accent);
+  color: var(--light-text);
+}
+
+body.light .categories button:hover {
+  background: var(--light-hover);
+}
+
 .code-list {
   margin-top: 2rem;
   max-width: 600px;
@@ -237,6 +278,10 @@ footer {
   font-family: 'Fira Code', monospace;
   font-size: 0.85rem;
   color: #0f0;
+}
+
+body.light .code-list {
+  color: #333;
 }
 
 .rituel-button {
@@ -275,3 +320,23 @@ footer {
   background-color: #444;
 }
 
+.avatar-box {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background-color: var(--light-hover);
+  color: var(--light-text);
+  border-radius: 8px;
+  box-shadow: 0 0 8px var(--theme-glow);
+  transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.avatar-box.glow {
+  animation: glow 1.5s ease-in-out;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 0px var(--theme-glow); }
+  50% { box-shadow: 0 0 20px var(--theme-glow); }
+  100% { box-shadow: 0 0 0px var(--theme-glow); }
+}
