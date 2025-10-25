@@ -62,6 +62,15 @@ function loadCategory(key) {
       link.target = "_blank";
       link.className = "code-link";
       container.appendChild(link);
+      function goBack() {
+  const container = document.getElementById("code-list");
+  container.innerHTML = "<p>📂 Kategori seçmek için bir ritüel başlat...</p>";
+
+  document.getElementById("avatar-reaction").textContent = "🧘‍♂️ Başlangıç noktasına dönüldü.";
+  logAction("geri dön");
+  playSound();
+}
+
     }
   });
 }
