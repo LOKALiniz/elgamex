@@ -38,10 +38,10 @@ const kodlar = {
     {
       type: "link",
       label: "🧪 Matrix Kod klasörü",
-      url: "https://drive.google.com/drive/folders/1x6d9A-CpPLR5Cscpaa6uvoCXA7brLwfi?usp=drive_link"
+      url: "https://drive.google.com/drive/folders/1VF9_Xn5JbU5yX7Y_GdOSKU-V9tjKjsSW"
     }
   ],
-    site: [
+  site: [
     {
       type: "link",
       label: "💻 Sitemin Kodları",
@@ -62,15 +62,18 @@ function loadCategory(key) {
       link.target = "_blank";
       link.className = "code-link";
       container.appendChild(link);
-      function goBack() {
-  const container = document.getElementById("code-list");
-  container.innerHTML = "<p>📂 Kategori seçmek için bir ritüel başlat...</p>";
-
-  document.getElementById("avatar-reaction").textContent = "🧘‍♂️ Başlangıç noktasına dönüldü.";
-  logAction("geri dön");
-  playSound();
-}
-
     }
   });
+}
+function toggleTheme() {
+  const body = document.body;
+  const isLight = body.classList.toggle("light");
+
+  // Modu kaydet
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+}
+
+function goToKodlar() {
+  // Mod zaten kaydedildi, sadece yönlendir
+  window.location.href = "kodlar.html";
 }
