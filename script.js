@@ -9,26 +9,9 @@ setInterval(() => {
 document.getElementById("welcome").textContent =
   ">> Hoş geldin savaşçı. Kod gücün aktif!";
 
-// Tema değiştirici (ritüel versiyon)
+// Tema değiştirici
 function toggleTheme() {
-  const body = document.body;
-  const avatarBox = document.getElementById("avatar-reaction");
-
-  body.classList.toggle("light");
-
-  if (body.classList.contains("light")) {
-    avatarBox.textContent = "🌞 Light mod aktif. Ritüel aydınlandı.";
-    document.documentElement.style.setProperty('--theme-glow', '#ffd6e8');
-  } else {
-    avatarBox.textContent = "🌑 Dark mod aktif. Gölge ritüeli başladı.";
-    document.documentElement.style.setProperty('--theme-glow', '#00f');
-  }
-
-  const audio = new Audio("sounds/theme-switch.mp3");
-  audio.play();
-
-  avatarBox.classList.add("glow");
-  setTimeout(() => avatarBox.classList.remove("glow"), 1500);
+  document.body.classList.toggle("light");
 }
 
 // Gerçek ziyaretçi sayacı
@@ -56,14 +39,11 @@ function createRaindrop() {
 }
 
 setInterval(createRaindrop, 100);
-
-// Proje listesi aç/kapa
 function toggleProjects() {
   const list = document.getElementById("project-list");
   list.style.display = list.style.display === "none" ? "block" : "none";
 }
 
-// Kod gösterici
 function showCode(projectId) {
   const codeDisplay = document.getElementById("code-display");
   const codeContent = document.getElementById("code-content");
@@ -76,8 +56,6 @@ function showCode(projectId) {
   codeContent.textContent = codes[projectId];
   codeDisplay.style.display = "block";
 }
-
-// Kod büyücüsü mesajı
 const mesajlar = [
   "Kodlar seninle olsun, savaşçı.",
   "Bir satır kod, bin duvarı aşar.",
@@ -85,3 +63,44 @@ const mesajlar = [
 ];
 const rasgele = mesajlar[Math.floor(Math.random() * mesajlar.length)];
 document.getElementById("wizard").textContent = `🧙‍♂️ Kod Büyücüsü: ${rasgele}`;
+
+function toggleTheme() {
+  const body = document.body;
+  const avatarBox = document.getElementById("avatar-reaction");
+
+  const isCurrentlyLight = body.classList.contains("light");
+
+  body.classList.add("theme-transition");
+
+  setTimeout(() => {
+    body.classList.remove("theme-transition");
+    body.classList.toggle("light");
+
+    const isNowLight = body.classList.contains("light");
+    avatarBox.textContent = isNowLight
+      ? "🌞 Light mod: Renkler dalga gibi yayılıyor."
+      : "🌑 Dark mod: Gölge ritüeli geri döndü.";
+
+    avatarBox.classList.add("glow");
+    setTimeout(() => avatarBox.classList.remove("glow"), 1500);
+  }, 2000); // 5 saniye sonra geçiş gerçekleşir
+}
+function toggleTheme() {
+  const body = document.body;
+  const isLight = body.classList.toggle("light");
+
+  // Modu kaydet
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+}
+
+function goToKodlar() {
+  // Mod zaten kaydedildi, sadece yönlendir
+  window.location.href = "kodlar.html";
+}
+
+
+
+
+
+
+
