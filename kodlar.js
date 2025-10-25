@@ -47,7 +47,7 @@ const kodlar = {
       label: "💻 Sitemin Kodları",
       url: "https://drive.google.com/drive/folders/1x6d9A-CpPLR5Cscpaa6uvoCXA7brLwfi"
     }
-  ],
+  ]
 };
 
 function loadCategory(key) {
