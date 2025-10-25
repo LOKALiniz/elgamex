@@ -40,7 +40,14 @@ const kodlar = {
       label: "🧪 Matrix Kod klasörü",
       url: "https://drive.google.com/drive/folders/1VF9_Xn5JbU5yX7Y_GdOSKU-V9tjKjsSW"
     }
-  ]
+  ],
+    site: [
+    {
+      type: "link",
+      label: "💻 Sitemin Kodları",
+      url: "https://drive.google.com/drive/folders/1x6d9A-CpPLR5Cscpaa6uvoCXA7brLwfi"
+    }
+  ],
 };
 
 function loadCategory(key) {
