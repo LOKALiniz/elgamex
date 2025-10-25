@@ -18,7 +18,7 @@
   <button onclick="loadCategory('matrix')">🧪 Matrix Kod</button>
   <button onclick="loadCategory('site')">💻 Sitenin Kodları</button>
 </div>
-<button onclick="window.location.href='index.html'" class="back-button">🔙 Geri Dön</button>
+<button id="back-button" onclick="window.location.href='index.html'">🔙 Geri Dön</button>
 
 
   <div id="code-list" class="code-list"></div>
@@ -26,3 +26,9 @@
   <script src="kodlar.js"></script>
 </body>
 </html>
+<script>
+  const theme = localStorage.getItem("theme");
+  if (theme === "light") {
+    document.body.classList.add("light");
+  }
+</script>
