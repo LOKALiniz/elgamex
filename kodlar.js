@@ -41,6 +41,13 @@ const kodlar = {
       url: "https://drive.google.com/drive/folders/1VF9_Xn5JbU5yX7Y_GdOSKU-V9tjKjsSW"
     }
   ],
+  kuran: [
+    {
+      type: "link",
+      label: "📖 Kuran Oku",
+      url: "https://lokaliniz.github.io/kuranoku"
+    }
+  ],
   site: [
     {
       type: "link",
