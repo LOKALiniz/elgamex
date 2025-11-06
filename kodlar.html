@@ -2,34 +2,158 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>Kodlar</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Kodlarım</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #00ffcc;
+      font-family: monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    .title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .categories button {
+      margin: 0.5rem;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      cursor: pointer;
+    }
+    .categories button:hover {
+      background: #00ffcc;
+      color: #0f0f0f;
+    }
+    .code-link {
+      display: block;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      color: #00ffcc;
+      text-decoration: none;
+    }
+    .code-link:hover {
+      text-decoration: underline;
+      color: #00ffff;
+    }
+    #back-button {
+      margin-top: 2rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      cursor: pointer;
+    }
+    #back-button:hover {
+      background: #00ffcc;
+      color: #0f0f0f;
+    }
+  </style>
 </head>
 <body>
   <h1 class="title">💻 Kodlarım</h1>
   <p class="subtitle">Kategori seç, kodları keşfet...</p>
 
-<div class="categories">
-  <button onclick="loadCategory('ask')">❤️ Çıkma Teklifi</button>
-  <button onclick="loadCategory('cicek')">🌸 Sevgiliye Çiçek</button>
-  <button onclick="loadCategory('baris')">🕊️ Barışma Teklifi</button>
-  <button onclick="loadCategory('cikmamesaji')">💌 Çıkma Mesajı</button>
-  <button onclick="loadCategory('ozur')">😔 Özür Mesajı</button>
-  <button onclick="loadCategory('matrix')">🧪 Matrix Kod</button>
-  <button onclick="loadCategory('kuran')">📖 Kuran Oku</button>
-  <button onclick="loadCategory('site')">💻 Sitenin Kodları</button>
-</div>
-<button id="back-button" onclick="window.location.href='index.html'">🔙 Geri Dön</button>
-
+  <div class="categories">
+    <button onclick="loadCategory('ask')">❤️ Çıkma Teklifi</button>
+    <button onclick="loadCategory('cicek')">🌸 Sevgiliye Çiçek</button>
+    <button onclick="loadCategory('baris')">🕊️ Barışma Teklifi</button>
+    <button onclick="loadCategory('cikmamesaji')">💌 Çıkma Mesajı</button>
+    <button onclick="loadCategory('ozur')">😔 Özür Mesajı</button>
+    <button onclick="loadCategory('matrix')">🧪 Matrix Kod</button>
+    <button onclick="loadCategory('kuran')">📖 Kuran Oku</button>
+    <button onclick="loadCategory('site')">💻 Sitenin Kodları</button>
+  </div>
 
   <div id="code-list" class="code-list"></div>
 
-  <script src="kodlar.js"></script>
+  <button id="back-button" onclick="window.location.href='index.html'">🔙 Geri Dön</button>
+
+  <script>
+    const kodlar = {
+      ask: [
+        {
+          type: "link",
+          label: "📁 Çıkma Teklifi Kodları klasörü",
+          url: "https://drive.google.com/drive/folders/1RaSuowyUQKCGaLbHiZdZstP1yz0F8Ula"
+        }
+      ],
+      cicek: [
+        {
+          type: "link",
+          label: "🌸 Sevgiliye Çiçek Kodları klasörü",
+          url: "https://drive.google.com/drive/folders/1UxpvhINAmz-bpMeCMWHPrNiUGTR-DxDH"
+        }
+      ],
+      baris: [
+        {
+          type: "link",
+          label: "🕊️ Barışma Teklifi Kodları klasörü",
+          url: "https://drive.google.com/drive/folders/1CCme3ayOphEGaF6IpiNt4gX77DTn-vf8"
+        }
+      ],
+      cikmamesaji: [
+        {
+          type: "link",
+          label: "💌 Çıkma Mesajı klasörü",
+          url: "https://drive.google.com/drive/folders/1cdtE40DEu1jj7OF0aL0gX0xHueQD6L2b"
+        }
+      ],
+      ozur: [
+        {
+          type: "link",
+          label: "😔 Özür Mesajı klasörü",
+          url: "https://drive.google.com/drive/folders/11J4PqDPq8KVAuFWmNV4ru-WYC54jTYzL"
+        }
+      ],
+      matrix: [
+        {
+          type: "link",
+          label: "🧪 Matrix Kod klasörü",
+          url: "https://drive.google.com/drive/folders/1VF9_Xn5JbU5yX7Y_GdOSKU-V9tjKjsSW"
+        }
+      ],
+      kuran: [
+        {
+          type: "link",
+          label: "📖 Kuran Oku",
+          url: "https://lokaliniz.github.io/kuranoku"
+        }
+      ],
+      site: [
+        {
+          type: "link",
+          label: "💻 Sitemin Kodları",
+          url: "https://drive.google.com/drive/folders/1sLex8_GgfEiHeFKbSmWhxYQyRqkP_mp1?usp=drive_link"
+        }
+      ]
+    };
+
+    function loadCategory(key) {
+      const container = document.getElementById("code-list");
+      container.innerHTML = "";
+
+      if (!kodlar[key]) return;
+
+      kodlar[key].forEach(item => {
+        if (item.type === "link") {
+          const link = document.createElement("a");
+          link.href = item.url;
+          link.textContent = item.label;
+          link.target = "_blank";
+          link.className = "code-link";
+          container.appendChild(link);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
-<script>
-  const theme = localStorage.getItem("theme");
-  if (theme === "light") {
-    document.body.classList.add("light");
-  }
-</script>
